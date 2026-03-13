@@ -19,11 +19,10 @@ This guide explains how to build LIVE555 shared libraries (.dll/.so) for Windows
 | `build_windows.bat` | Windows build script (VS 2022, x64, shared libs) |
 | `build_linux.sh` | Linux build script (Ubuntu, x64, shared libs) |
 | `CMakeLists.txt` | Cross-platform CMake configuration |
-| `UnrealPlugins/` | Pre-organized headers and library folders for UE integration |
 
 ## Unreal Engine ThirdParty Structure
 
-After building, copy `UnrealPlugins/ThirdParty/live555/` into your Unreal plugin:
+After building, copy the built libraries and headers into your Unreal plugin:
 
 ```
 YourPlugin/
@@ -71,11 +70,7 @@ YourPlugin/
    - DLLs: `build_vs2022\Release\*.dll`
    - Import libraries: `build_vs2022\Release\*.lib`
 
-5. **Copy to UnrealPlugins**
-   ```cmd
-   copy build_vs2022\Release\*.dll UnrealPlugins\ThirdParty\live555\lib\Win64\
-   copy build_vs2022\Release\*.lib UnrealPlugins\ThirdParty\live555\lib\Win64\
-   ```
+5. **Output libraries are in:** `build_vs2022\Release\` (`.dll` + `.lib` files)
 
 ### Manual Build (Alternative)
 ```cmd
@@ -118,11 +113,7 @@ sudo apt-get install -y build-essential cmake
    ./build_linux.sh Debug
    ```
 
-5. **Copy to UnrealPlugins**
-   ```bash
-   mkdir -p UnrealPlugins/ThirdParty/live555/lib/Linux
-   cp build_linux/*.so UnrealPlugins/ThirdParty/live555/lib/Linux/
-   ```
+5. **Output libraries are in:** `build_linux/` (`.so` files)
 
 ### Manual Build (Alternative)
 ```bash
